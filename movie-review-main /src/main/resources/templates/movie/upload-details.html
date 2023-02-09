@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Upload Details</title>
+<link th:rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}" />
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<h1>Upload Details</h1>
+		</div>
+
+		<div class="row">
+			<div class="col-12">
+				<div class="form-group">
+					<label for="title"
+						class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Name</label>
+					<span th:text=${dummy.name}></span>
+				</div>
+
+				<div class="form-group">
+					<label for="title"
+						class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">DOB</label>
+					<span th:text=${dummy.dob}></span>
+				</div>
+
+				<div class="form-group">
+					<label for="title"
+						class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Path</label>
+					<span th:text=${dummy.filepath}></span>
+				</div>
+				
+				<div class="form-group">
+					<img th:src="${dummy.filepath}" alt="File"/>
+				</div>
+				
+				<div class="form-group">
+					<img th:src="${dummy.image.toString()}" alt="File"/>
+				</div>
+				<div class="form-group">
+					<img th:src="${'data:image/jpeg;charset=utf-8;base64,' +dummy.imageString}" alt="File" height="50px" width="50px;"/>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+						http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd
+						http://www.liquibase.org/xml/ns/pro 
+						http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd">
+	
+	<changeSet author="dipak" id="2023-01-25-11-05">
+        <createTable tableName="movie">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+            	<constraints nullable="false"/>
+            </column>
+            <column name="aggregated_rating" type="FLOAT" />
+            <column name="budget" type="DOUBLE" />
+            <column name="synopsis" type="TEXT"/>
+            <column name="active" type="BOOLEAN" defaultValue="1"/>
+        </createTable>
+    </changeSet>
+    
+    <changeSet author="dipak" id="2023-01-25-11-10">
+        <createTable tableName="users">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="username" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="VARCHAR(255)">
+            	<constraints nullable="false"/>
+            </column>
+            <column name="password" type="VARCHAR(255)"/>
+            <column name="active" type="BOOLEAN" defaultValue="1"/>
+        </createTable>
+    </changeSet>
+    
+    <changeSet author="dipak" id="2023-01-25-11-15">
+        <createTable tableName="movie_review">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="review" type="TEXT">
+            	<constraints nullable="false"/>
+            </column>
+            <column name="rating" type="FLOAT" />
+            <column name="movie_id" type="BIGINT">
+            	<constraints nullable="false" foreignKeyName="movie_review_movie_id_fk" references="movie(id)"/>
+            </column>
+            <column name="reviewed_by" type="BIGINT">
+            	<constraints nullable="false" foreignKeyName="movie_review_creator_user_id_fk" references="users(id)"/>
+            </column>
+            <column name="create_date" type="DATETIME"/>
+            <column name="active" type="BOOLEAN" defaultValue="1"/>
+        </createTable>
+    </changeSet>
+    
+    
+</databaseChangeLog>

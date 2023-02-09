@@ -1,0 +1,40 @@
+server.port = 8090
+
+spring.jpa.hibernate.ddl-auto=update
+
+#spring security config
+spring.security.user.name=abc
+spring.security.user.password=abc
+
+#Mysql Driver
+spring.datasource.url=jdbc:mysql://localhost:3306/review_db
+spring.datasource.username=username
+spring.datasource.password=password
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+
+#Liquibase
+spring.liquibase.enabled=true
+spring.liquibase.change-log=classpath:db/liquibase-changeLog.xml
+
+
+logging.level.root=INFO
+logging.level.com.codeinteracts==TRACE
+logging.level.web=INFO
+logging.file.name=movie-review.log
+
+
+#Postgres Driver
+#spring.datasource.url=jdbc:postgresql://localhost:5432/db_name
+#spring.datasource.username=username
+#spring.datasource.password=password
+#spring.datasource.driver-class-name=add postgres driver
+
+#spring mail configurations
+spring.mail.host=smtp.gmail.com
+spring.mail.port=587
+spring.mail.username=
+spring.mail.password=
+spring.mail.properties.mail.smtp.auth=true
+spring.mail.properties.mail.smtp.starttls.enable=true
+
+

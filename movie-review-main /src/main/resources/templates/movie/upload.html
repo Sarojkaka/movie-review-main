@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Movie</title>
+<link th:rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}" />
+</head>
+<body>
+<body>
+	<section class="my-5">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 mx-auto">
+					<h2>Upload Image Example</h2>
+					<p th:text="${message}" th:if="${message ne null}"
+						class="alert alert-primary"></p>
+					<form method="post" th:action="@{/upload}" enctype="multipart/form-data" th:object="${dummy}">
+						
+						<div class="form-group row">
+							<label for="name" class="col-sm-2 col-form-label">Name</label> 
+							<input class="form-control" type="text" name="name" th:field="*{name}" required>
+						</div>
+						
+						<div class="form-group row">
+							<label for="name" class="col-sm-2 col-form-label">DOB</label> 
+							<input class="form-control" type="date" th:field="*{dob}" required>
+						</div>						
+						
+						<div class="form-group row">
+							<input type="file" name="image-file" accept="image/*" class="form-control-file">
+						</div>
+						
+						<div class="form-group row">
+							<button type="submit" class="btn btn-primary" >Submit</button>
+						</div>
+					</form>
+					<span th:if="${msg != null}" th:text="${msg}"></span>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+<script th:src="@{/bootstrap/js/jquery-3.6.3.min.js}"></script>
+<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+
+<script>
+	var $div2 = $("#success-message-box");
+	$div2.show();
+	setTimeout(function() {
+		$div2.hide();
+	}, 10000);
+</script>
+
+</body>
+
+
+</html>

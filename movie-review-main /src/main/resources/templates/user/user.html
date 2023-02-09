@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>User</title>
+<link th:rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}" />
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm">
+				<a th:href="@{/web/user/create}"><button type="button" class="btn btn-primary">Create</button></a>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">	
+				
+				<div th:if="${successMessage}" class="alert alert-info" id="success-message-box" role="alert">
+					<span th:text="${successMessage}"></span>
+				</div>
+
+				<div class="col-lg-10 mt-5 mb-5">
+					<table class="table">
+						<thead class="thead-dark">
+							<tr class="tm-bg-gray">
+								<th scope="col">Name</th>
+								<th scope="col">Username</th>
+								<th scope="col">Email</th>
+								<th scope="col">Otp Verified</th>
+								<th scope="col">Active</th>
+								<th scope="col">&nbsp;</th>
+								<th scope="col">&nbsp;</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr class="clickable" style="cursor: pointer"
+								th:each="user : ${users}"
+								th:href="@{'/web/user/'+${user.id}/update }">
+								<td class="text-center" th:text="${user.firstName} + ' ' + ${user.lastName}" />
+								<td class="text-center" th:text="${user.username}" />
+								<td class="text-center" th:text="${user.email}" />
+								<td class="text-center" th:text="${user.otpVerified}" />
+								<td class="text-center" th:text="${user.active}" />
+								<td class="text-center" th:text="Edit" />
+								<td class="text-center" th:text="Delete" />
+							</tr>
+							<tr th:if="${users.size} == 0">
+								<td class="text-center" colspan="6">No Results to display</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<script th:src="@{/bootstrap/js/jquery-3.6.3.min.js}"></script>
+	<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+	
+	<script>
+	
+	    var $div2 = $("#success-message-box");
+	    $div2.show();
+	    setTimeout(function() {
+	        $div2.hide();
+	    }, 10000);
+	</script>
+
+</body>
+
+
+</html>

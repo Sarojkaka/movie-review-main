@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>user</title>
+<link th:rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}" />
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<h1>Details</h1>
+		</div>
+
+		<div class="row">
+			<div class="col-12">
+				<div class="form-group">
+					<label for="title"
+						class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Name</label>
+					<span th:text="${user.firstName} + ' ' + ${user.lastName}" /></span>
+				</div>
+
+				<div class="form-group">
+					<label for="title"
+						class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Username</label>
+					<span th:text="${user.username}" /></span>
+				</div>
+				
+				<div class="form-group">
+					<label for="title"
+						class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Email</label>
+					<span th:text="${user.email}" /></span>
+				</div>
+				
+			</div>
+		</div>
+
+		<div class="row">
+
+			<div class="col-lg-10 mt-5 mb-5">
+				<table class="table">
+					<thead class="thead-dark">
+						<tr class="tm-bg-gray">
+							<th scope="col">Review</th>
+							<th scope="col">Rating</th>
+							<th scope="col">Reviewer</th>
+							<th scope="col">Reviewed On:</th>
+							<th scope="col">User</th>
+							<th scope="col">&nbsp;</th>
+							<th scope="col">&nbsp;</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="clickable" style="cursor: pointer"
+							th:each="review : ${reviews}"
+							th:href="@{'/web/user-review/'+${review.id}/update }">
+							<td class="text-center" th:text="${review.review}" />
+							<td class="text-center" th:text="${review.rating}" />
+							<td class="text-center" th:text="${review.reviewer}" />
+							<td class="text-center" th:text="${review.createDate}" />
+							<td class="text-center" th:text="Edit" />
+							<td class="text-center" th:text="Delete" />
+						</tr>
+						<tr th:if="${reviews == null || reviews.size == 0}">
+							<td class="text-center" colspan="7">No Results to display</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+		</div>
+	</div>
+
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Verify OTP</title>
+<link th:rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}" />
+</head>
+<body>
+	<h1>Add user</h1>
+	<div class="container">
+		<div class="row">
+			<form th:action="@{/web/user/otp/verify}" method="post" th:object="${user}">
+				<div th:if="${errors != null && errors.size > 0}" class="alert alert-danger" role="alert">
+					<ul class="error">
+						<li th:each="err : ${errors}" th:text="${err}" />
+					</ul>
+				</div>
+				
+				<input type="hidden" th:value="${id}"  th:field="*{id}">
+
+				<div class="form-group row">
+					<label for="name" class="col-sm-2 col-form-label">Username</label> <input
+						class="form-control" type="text"th:field="*{username}"
+						required>
+				</div>
+				
+				<div class="form-group row">
+					<label for="name" class="col-sm-2 col-form-label">OTP</label> <input
+						class="form-control" type="text"th:field="*{otp}"
+						required>
+				</div>
+
+				<div class="form-group row">
+					<input type="submit" class="btn btn-primary" value="Submit">
+				</div>
+
+
+			</form>
+		</div>
+
+	</div>
+
+
+	<script th:src="@{/bootstrap/js/jquery-3.6.3.min.js}"></script>
+	<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+
+</body>
+
+
+</html>
